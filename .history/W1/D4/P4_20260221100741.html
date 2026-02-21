@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid layouts1</title>
+    <style>
+        .grid-fr{
+            display: grid;
+            grid-template-columns:repeat(3,1fr); /*3 equal columns*/
+            gap: 10px;
+            margin: 10px;
+        }
+        .item{
+            background-color: darkgrey;
+            color: black;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--Grid lines and grid span-->
+    <p>Grid lines and Grid Span</p>
+    <div class="grid-fr">
+        <div class="item">1fr</div>
+        <div class="item">2fr</div>
+        <div class="item">1fr</div>
+    </div>
+</body>
+</html>
