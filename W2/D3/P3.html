@@ -7,18 +7,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    <nav class="border rounded-b w-full h-16 flex justify-between bg-pink-200">
-        <div class="flex gap-6 items-center">
+    <nav class="border rounded-b w-full h-80 flex-col md:flex-row justify-between bg-pink-200 height-full">
+        <div class="flex gap-6 items-center  flex flex-col md:flex-row gap-4">
             <a href="#" class="font-bold text-lg">gola</a>
-            <ul class="flex gap-6 text-blue-700">
+            <ul class="flex gap-6 text-blue-700 flex flex-col md:flex-row gap-4">
                 <li><a href="#" class="hover:text-black tarnsition">HOME</a></li>
                 <li><a href="#" class="hover:text-black tarnsition">FEATURES</a></li>
                 <li><a href="#" class="hover:text-black tarnsition">CONTACT</a></li>
             </ul>
         </div>
-        <div class="flex gap-6 items-center">
+        <div class="flex gap-6 py-5 items-center flex flex-col md:flex-row ">
             <a href="#" class="hover:text-red tarnsition">LOG-IN</a>
-            <button class="rounded-lg bg-black text-white hover:bg-gray-800 px-4 py-2">Sign-UP</button>
+            <button class="absolute rounded-lg bg-black text-white hover:bg-gray-800 px-4 py-2">Sign-UP</button>
+         </ul>
         </div>
     </nav>
 </body>
