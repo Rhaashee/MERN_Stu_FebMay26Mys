@@ -8,7 +8,6 @@
         body {
             font-family: Arial, sans-serif;
             margin: 15px;
-
         }
         /* nav bar using sticky function */
         .navbar {
@@ -38,27 +37,14 @@
             text-align: center;
             padding: 10px 0;
         }
-        /* button hover */
-        .hover-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s ;
-        }
-        .hover-button:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
-        }
         /* bouncing ball */
         .ball {
             width: 50px;
             height: 50px;
-            background-color: red;
+            background-color: rgb(0, 89, 255);
             border-radius: 50%;
             position: relative;
-            animation: bounce 2s infinite;
+            animation: bounce 4s infinite;
         }
         @keyframes bounce {
             0%, 100% {
@@ -79,24 +65,22 @@
             color: white;
         }
         .box1 {
-            background-color:  red;
+            background-color:  rgb(209, 123, 210);
             top: 500px;
             left: 50px;
             z-index: 1;
             opacity: 60%;
         }
         .box2 {
-            background-color: blue;
+            background-color: rgb(108, 108, 229);
             top: 550px;
             left: 80px;
             z-index: -2;
         }
-
-
-
          .roof{
-            position: relative;
-            left: 300px;
+            position:relative;
+            top: 450px;
+            left: 400px;
             width: 650px;
             height: 50px;
             background-color: rgb(251, 140, 6);
@@ -134,8 +118,6 @@
                 height: 70px;
                 background-color: purple;
                 border: 5px solid black;
- 
-
             }
             .door {
                 position: absolute;
@@ -146,11 +128,7 @@
                 background-color: blue;
                 border: 5px  solid black;
                 border-bottom: 0px solid black;
-
             }
-
-        
-
     </style>
 </head>
 <body>
@@ -162,10 +140,6 @@
     </div>
 
     <div class="content">
-        <h2>Button Hover</h2>
-        <button class="hover-button">Hover Me</button>
-
-
         <h2>Bouncing ball</h2>
         <div class="ball"></div>
 
@@ -183,9 +157,7 @@
     </div>
 
     <!-- Footer -->
-     <div class="footer">
-        fixed footer
-     </div>
+     <div class="footer">footer</div>
      
 </body>
 </html>
