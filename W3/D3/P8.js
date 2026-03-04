@@ -11,4 +11,4 @@ const jsonString = JSON.stringify(employee);
 
 // JSON parsing 
 const parsedObject = JSON.parse(jsonString);
-console.log(parsedObject);
+console.log(parsedObject); 
