@@ -21,6 +21,34 @@ signupForm.addEventListener("submit", function(event){
         signupPassword.focus();
         return;
     }
+    // Check for UPPERCASE characters
+    if(!/[A-Z]/.test(password)){
+        message.textContent = "Password must have atleast 1 UPPERCASE character.";
+        message.style.color  = "red";
+        livePassword.focus();
+        return;
+    }
+    // Check for LOWERCSE characters
+    if(!/[a-z]/.test(password)){
+        message.textContent = "Password must have atleast 1 LOWERCASE character.";
+        message.style.color  = "red";
+        livePassword.focus();
+        return;
+    }
+    // check number 
+    if(!/\d/.test(password)){
+        message.textContent = "Password must have atleast 1 digit in it.";
+        message.style.color  = "red";
+        livePassword.focus();
+        return;
+    }
+    // check for special characters 
+    if(!/[@#$%&*!]/.test(password)){
+        message.textContent = "Password must have atleast 1 special character [!@#$%&*].";
+        message.style.color  = "red";
+        livePassword.focus();
+        return;
+    }
     // Confirm password check
     if(password !== confirm){
         message.textContent = "Passwords do not match.";
