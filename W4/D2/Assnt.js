@@ -5,10 +5,8 @@ const message = document.getElementById("message");
 
 signupForm.addEventListener("submit", function(event){
     event.preventDefault();
-
     const password = signupPassword.value;
     const confirm = confirmPassword.value;
-
     // Password required
     if(!password){
         message.textContent = "Password is required.";
@@ -16,7 +14,6 @@ signupForm.addEventListener("submit", function(event){
         signupPassword.focus();
         return;
     }
-
     // Password length
     if(password.length < 8){
         message.textContent = "Password must be atleast 8 characters long.";
@@ -24,7 +21,6 @@ signupForm.addEventListener("submit", function(event){
         signupPassword.focus();
         return;
     }
-
     // Confirm password check
     if(password !== confirm){
         message.textContent = "Passwords do not match.";
@@ -32,13 +28,11 @@ signupForm.addEventListener("submit", function(event){
         confirmPassword.focus();
         return;
     }
-
     // Success 
     message.textContent = "Password matched successfully!";
     message.style.color = "green";
     console.log("Success!");
 });
-
 // clear message on input
 signupPassword.addEventListener("input", () => message.textContent = "");
 confirmPassword.addEventListener("input", () => message.textContent = "");
