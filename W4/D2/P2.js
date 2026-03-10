@@ -13,6 +13,9 @@ document.getElementById("addBtn").addEventListener("click", function () {
 document.getElementById("rmBtn").addEventListener("click", function () {
     if (list.lastElementChild) {
         list.removeChild(list.lastElementChild);
+        if (!list.lastElementChild) {
+            counter = 1;
+        }
     }
     else {
         errMessage.textContent ="No elememts to be deleted" ;
