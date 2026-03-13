@@ -1,0 +1,44 @@
+const signupForm = document.getElementById("signupForm");
+const signupEmail  = document.getElementById("signupEmail");
+const signupPassword = document.getElementById("signupPassword");
+const message = document.getElementById("message");
+
+signupForm.addEventListener("submit",function(event){
+    event.preventDefault();
+
+    if(!email){
+        message.textContent = "Email is Required!";
+        message.style.color  = "red";
+        signupEmail.focus();
+        return;
+    }
+    if(!email.includes('@') || !email.includes('.')){
+        message.textContent = "Please enter valid email id";
+        message.style.color  = "red";
+        signupEmail.focus();
+        return;
+    }
+    // Password Validation
+    const password = signupPassword.value;
+    if(!password){
+        message.textContent = "Password is Required!";
+        message.style.color  = "red";
+        signupPassword.focus();
+        return;
+    }
+    // Check length of the PASSWORD
+    if(password.length < 8){
+        message.textContent = "Password must be atleast 8 characters long.";
+        message.style.color  = "red";
+        signupPassword.focus();
+        return;
+    }
+    // Check for UPPERCASE characters
+    if(!/[A-Z]/.){
+        message.textContent = "Password must .";
+        message.style.color  = "red";
+        signupPassword.focus();
+        return;
+    }
+    }
+});

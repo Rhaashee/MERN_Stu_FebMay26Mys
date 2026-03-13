@@ -1,0 +1,1 @@
+const introBtn = document.getElementById

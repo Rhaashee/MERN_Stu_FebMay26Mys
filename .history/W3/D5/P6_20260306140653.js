@@ -1,0 +1,8 @@
+const form = document.getElementById("loginForm");
+const username = document.getElementById("username");
+const message = document.getElementById("message");
+
+form.addEventListener("submit",function(event){
+    event.preventDefault()
+})
+

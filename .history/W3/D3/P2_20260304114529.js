@@ -1,0 +1,2 @@
+// while loop
+console.log("")

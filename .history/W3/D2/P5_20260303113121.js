@@ -1,0 +1,2 @@
+//Function Declaration
+function greet

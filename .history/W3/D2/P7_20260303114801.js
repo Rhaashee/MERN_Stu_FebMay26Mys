@@ -1,0 +1,5 @@
+// Arrow Function
+// Adding two numbers
+const Sum = (a,b) => {
+    return a+b;
+}

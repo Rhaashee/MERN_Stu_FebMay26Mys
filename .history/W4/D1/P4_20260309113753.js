@@ -1,0 +1,3 @@
+// Logging 
+
+console.log("Console ")

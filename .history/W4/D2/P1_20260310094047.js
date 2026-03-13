@@ -1,0 +1,13 @@
+// innerText & textContenet
+// innerText: visible rendered text only 
+// textContent: all text nodes regardless of CSS
+const message = document.getElementById("message");
+const const message = document.getElementById("message");
+ = document.getElementById("message");
+
+document.getElementById("message").addEventListener("click",function(){
+    message.innerText = "Updated using innerText";
+});
+document.getElementById("textContentBtn").addEventListener("click",function(){
+    message.innerText = "Updated using innerText";
+});
