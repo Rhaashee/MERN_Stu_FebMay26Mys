@@ -3,4 +3,4 @@ set -e
 
 echo "Checking Node.js installation"
 node -v
-npm -v
+npm -v 
