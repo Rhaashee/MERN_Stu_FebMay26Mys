@@ -1,2 +1,0 @@
-// InsertAdjacenHTML
-const con

@@ -1,1 +1,0 @@
-const out = document.getElementById("put")

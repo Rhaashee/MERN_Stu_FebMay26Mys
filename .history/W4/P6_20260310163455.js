@@ -1,6 +1,0 @@
-const livePassword = document.getElementById("livePassword");
-const message = document.getElementById("message");
-
-livePassword.addEventListener("",function
-    {
-)

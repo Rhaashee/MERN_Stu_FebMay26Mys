@@ -1,4 +1,0 @@
-// finally
-function example(){
-    try
-}

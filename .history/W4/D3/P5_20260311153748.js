@@ -1,8 +1,0 @@
-const introBtn = document.getElementById("introBtn");
-const output = document.getElementById("output");
-
-introBtn.addEventListener("click",function(){
-    output.textContent = "Sending Request...";
-    fetch("https://jsonplaceholder.typicode.com/posts/12")
-})
-

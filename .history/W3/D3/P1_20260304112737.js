@@ -1,2 +1,0 @@
-// for loop
-console.log("")

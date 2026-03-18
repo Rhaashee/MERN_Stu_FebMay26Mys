@@ -1,3 +1,0 @@
-// Event delegation
-
-const taskList

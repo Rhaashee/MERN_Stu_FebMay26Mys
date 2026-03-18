@@ -1,4 +1,0 @@
-// Arrow Function
-(a,b) => {
-    
-}

@@ -63,4 +63,5 @@ signupForm.addEventListener("submit", function(event){
 });
 // clear message on input
 signupPassword.addEventListener("input", () => message.textContent = "");
-confirmPassword.addEventListener("input", () => message.textContent = "");
+confirmPassword.addEventListener("input", () => message.textContent = "");  
+

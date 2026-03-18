@@ -1,3 +1,0 @@
-// InsertAdjacenHTML
-const container = document.getElementById("container");
-document.getElementById("btn").addEventListener("")

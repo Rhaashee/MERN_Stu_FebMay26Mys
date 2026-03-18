@@ -1,2 +1,0 @@
-// while loop
-console.log

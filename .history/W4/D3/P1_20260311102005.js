@@ -1,5 +1,0 @@
-const checkBtn = document.getElementById("checkBtn");
-
-checkBtn.addEventListener("click",function(){
-    const
-})

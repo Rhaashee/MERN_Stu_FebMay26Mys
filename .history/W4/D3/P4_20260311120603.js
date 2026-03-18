@@ -1,1 +1,0 @@
-const jsonOutput = document.getElementById("jsonOutput")

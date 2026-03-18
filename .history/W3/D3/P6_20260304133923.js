@@ -1,2 +1,0 @@
-// Nested Objects
-const student

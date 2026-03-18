@@ -1,1 +1,0 @@
-const onceBtn = document.getElementById("onceBtn");

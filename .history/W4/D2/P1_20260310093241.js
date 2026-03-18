@@ -1,1 +1,0 @@
-const innerTxtbtn = document
