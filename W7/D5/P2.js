@@ -31,7 +31,7 @@ app.get("/profile",function(req,res){
             message : "No active login session found."
         });
     }
-    res.join({
+    res.json({
         success:true,
         sessionUser : req.session.user
     });
