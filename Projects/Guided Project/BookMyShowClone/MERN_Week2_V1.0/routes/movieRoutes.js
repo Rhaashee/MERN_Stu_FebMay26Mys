@@ -1,9 +1,9 @@
 // Handles request related to movie
 const express = require("express");
-const {authMiddleware} = require(".../middleware/authMiddleware"); 
+const {authMiddleware} = require("../middleware/authMiddleware"); 
 
 const {getHome,getAllMovies,getMovieById,addMovie,updateMovie,deletedMovie} = require(".../controllers/movieControllers");
-const roleMiddleware = require(".../middleware/roleMiddleware");
+const roleMiddleware = require("../middleware/roleMiddleware");
 
 const router = express.Router();
 
