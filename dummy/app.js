@@ -20,7 +20,7 @@ app.use(
     session({
         secret:"secretKeyshhhdonttellanyone",
         resave:false,
-        saveUninitialized:false,
+        saveUnitialized:false,
         cookie:{
             secure:false,
             httpOnly:true
