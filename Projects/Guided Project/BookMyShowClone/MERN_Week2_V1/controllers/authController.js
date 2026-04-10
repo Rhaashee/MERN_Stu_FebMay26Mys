@@ -2,6 +2,7 @@
 const jwt = require("jsonwebtoken");
 const users = require("../data/users");
 
+
 const CustomError = require("../utils/CustomError");
 
 const {JWT_SECRET} = require("../middleware/authMiddleware");
