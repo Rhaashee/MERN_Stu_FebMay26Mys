@@ -1,36 +1,39 @@
-// Sorting limiting and Pagination 
+// Sorting, limiting and Pagination
+// MERN_Stu_FebMay26Mys\W8\D1\P4.js
 const mongoose = require("mongoose");
+const Product = require("./P3"); //importing from P3.js
 
-async function sortPaginationDemo() {
-    try {
+async function sortPaginationDemo(){
+    try{
         await mongoose.connect("mongodb://localhost:27017/merntraining");
         console.log("MongoDB connected successfully");
 
-        const productSchema = new mongoose.Schema({
-            name: String,
-            price: Number,
-            category: String,
-            status: String
-        });
+        const sortedAscending = await Product.find({category: "Electronics"}).sort({price:1});
+        console.log(sortedAscending);
 
-        const Product = mongoose.model("Product", productSchema);
+        const sortedDecscending = await Product.find({category: "Electronics"}).sort({price:-1});
+        console.log(sortedDecscending);
 
-        await Product.create([
-            { name: "MAC_M5(AIR)", price: 100000, category: "Laptop", status: "Active" },
-            { name: "Iphone18", price: 120000, category: "Mobile-Phone", status: "In-Active" },
-            { name: "Dell", price: 20000, category: "Laptop", status: "Active" },
-            { name: "Iwatch", price: 30000, category: "SmartWatch", status: "In-Active" }
-        ]);
+        //limit() retricts result count
+        const limitedResults = await Product.find({category: "Stationary"}).sort({createdOrder:1}).limit(2);
+        console.log("Limited Results:",limitedResults);
 
-        // Sorting
-        const sortedAscending = await Product.find({ category: "Laptop" })
-            .sort({ price: 1 });
+        //Pagination
+        const page = 2;
+        const limitCount = 2;
+        const skipCount = (page-1)*limitCount;
 
-        console.log("Sorted in Ascending order :", sortedAscending);
+        const paginatedResults = await Product.find({category: "Stationary"}).sort({createdOrder:1})
+                                .skip(skipCount).limit(limitCount);
 
-    } catch (error) {
-        console.log("sort_Pagination Demo Error:", error.message);
+        console.log("Pagination results: ",paginatedResults);
+
+
+        await mongoose.connection.close();
+        console.log("connection closed");
+    }
+     catch(error){
+        console.log("sort_Pagination demo error:",error.message);
     }
 }
-
 sortPaginationDemo();
