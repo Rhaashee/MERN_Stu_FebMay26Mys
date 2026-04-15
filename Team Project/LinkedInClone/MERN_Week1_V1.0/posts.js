@@ -2,6 +2,7 @@
 const { getCurrentUser } = require("./user");
 
 let posts = [];
+let postIdCounter = 1;
 
 async function createPost(content) {
     const user = getCurrentUser();
@@ -9,7 +10,7 @@ async function createPost(content) {
     if (!user) throw "No active user";
 
     const post = {
-        id: Date.now().toString(),
+        id: postIdCounter++,
         authorId: user.id,
         content,
         likes: [],
