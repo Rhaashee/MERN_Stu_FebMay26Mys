@@ -25,7 +25,6 @@ async function main() {
                 { text: "Helpful article" }
             ]
         });
-
         console.log("embedding: ");
         console.log(await Blog.find());
 
