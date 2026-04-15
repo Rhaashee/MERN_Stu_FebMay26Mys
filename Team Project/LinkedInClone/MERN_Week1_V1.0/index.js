@@ -5,7 +5,7 @@ const utils = require("./utils");
 
 const { createProfile, getCurrentUser, getAllUsers } = require("./user");
 const { addSkill } = require("./profile");
-const { sendRequest, getRequests, acceptRequest } = require("./connections");
+const { sendRequest, getRequests, acceptRequest, rejectRequest, viewConnections } = require("./connections");
 const { createPost } = require("./posts");
 const { viewFeed } = require("./feed");
 
@@ -20,11 +20,14 @@ function menu() {
     console.log("3.Add Skill");
     console.log("4.View Users");
     console.log("5.Send Request");
-    console.log("6.View Requests");
-    console.log("7.Create Post");
-    console.log("8.View Feed");
-    console.log("9.Exit");
-    console.log("10.Switch User");
+    console.log("6.Accept Request");
+    console.log("7.Reject Request");
+    console.log("8.View Connections");
+    console.log("9.View Requests");
+    console.log("10.Create Post");
+    console.log("11.View Feed");
+    console.log("12.Exit");
+    console.log("13.Switch User");
 
     rl.question("Choose: ", async (choice) => {
         try {
@@ -58,7 +61,7 @@ function menu() {
                 case "5":
                     rl.question("User ID: ", async (id) => {
                         try {
-                            await sendRequest(id);
+                            await sendRequest(Number(id));
                             utils.success("Request sent");
                         } catch (err) {
                             utils.error(err);
@@ -94,11 +97,11 @@ function menu() {
                     const users = getAllUsers();
 
                     users.forEach(u => {
-                        console.log(`ID: ${u.id} | Name: ${u.name}`);
+                        console.log(`ID: ${user.id} | Name: ${user.name}`);
                     });
 
                     rl.question("Enter User ID to switch: ", (id) => {
-                        const user = users.find(u => u.id === id);
+                        const user = users.find(u => u.id === Number(id));
 
                         if (!user) {
                             utils.error("User not found");
@@ -110,6 +113,41 @@ function menu() {
                         menu();
                     });
                     break;
+
+                    case "11":
+                        rl.question("Enter Sender ID: ",async (id)=>{
+                            try{
+                                await acceptRequest(Number(id));
+                                utils.success("Request accepted");
+                        }
+                            catch(err){
+                                utils.error(err);
+                            }
+                            menu();
+                        });
+                        break;
+
+                        case "12":
+                            rl.question("Enter Sender ID: ",async(id)=>{
+                                try{
+                                    rejectRequest(Number(id));
+                                    utils.success("Request rejected");
+                                }catch(err){
+                                    utils.error(err);
+                                }
+                                menu();
+                            });
+                            break;
+                            
+                            case "13":
+                                try{
+                                    const connections = viewConnections();
+                                    console.log(connections);
+                                }catch(err){
+                                    utils.error(err);
+                                }
+                                menu();
+                                break;
 
                 default:
                     utils.error("Invalid option");
