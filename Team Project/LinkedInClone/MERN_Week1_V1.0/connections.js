@@ -3,6 +3,19 @@ const { getCurrentUser, getAllUsers } = require("./user");
 
 let requests = [];
 
+// View connections
+function viewConnections(){
+    const user = getCurrentUser();
+    const users = getAllUsers();
+
+    if(!user){
+        throw "Login required";
+    }
+    return (user.connections || []).map(id =>
+        users.find(u => u.id === id)
+    );
+}
+// Send Request 
 function sendRequest(targetId) {
     return new Promise((resolve, reject) => {
         const sender = getCurrentUser();
@@ -15,7 +28,9 @@ function sendRequest(targetId) {
             r.senderId === sender.id && r.receiverId === targetId
         );
 
-        if (already) return reject("Request already sent");
+        if (already) {
+            return reject("Request already sent");
+        }
 
         const request = {
             senderId: sender.id,
@@ -34,6 +49,7 @@ function getRequests() {
     return requests.filter(r => r.receiverId === user.id);
 }
 
+// Accept request 
 async function acceptRequest(senderId) {
     const user = getCurrentUser();
     const req = requests.find(r =>
@@ -43,18 +59,45 @@ async function acceptRequest(senderId) {
     if (!req) throw "Request not found";
 
     req.status = "accepted";
+    // To Remove request after accepting
+    requests = requests.filter(r =>
+        !(r.senderId === senderId && r.receiverId === user.id)
+    );
 
     const users = getAllUsers();
     const sender = users.find(u => u.id === senderId);
+
+    // Prevent crash if undefined
+    if (!user.connections) user.connections = [];
+    if (!sender.connections) sender.connections = [];
 
     user.connections.push(senderId);
     sender.connections.push(user.id);
 
     return req;
 }
+// Reject Request 
+function rejectRequest(senderId) {
+    const user = getCurrentUser();
+
+    const index = requests.findIndex(r =>
+        r.senderId === senderId && r.receiverId === user.id
+    );
+
+if (index === -1){
+    throw "Request not found";
+}
+
+    // REMOVE request
+    requests.splice(index, 1);
+
+    return "Request rejected";
+}
 
 module.exports = {
+    viewConnections,
     sendRequest,
     getRequests,
-    acceptRequest
+    acceptRequest,
+    rejectRequest
 };
