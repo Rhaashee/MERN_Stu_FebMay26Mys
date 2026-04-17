@@ -1,4 +1,4 @@
-// stores data of all the connections and requests 
+// stores data of connections and requests 
 const connectionsData ={
     // add new arrays inside same store
     connections :[],
