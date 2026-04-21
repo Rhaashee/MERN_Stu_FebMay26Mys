@@ -1,4 +1,3 @@
-const { attempt } = require("lodash");
 const mongoose = require("mongoose");
 
 const otpSchema = new mongoose.Schema({
@@ -14,19 +13,20 @@ const otpSchema = new mongoose.Schema({
         select:false,
     },
     expiresAt:{
-        type:Date,
+        type: Date,
         required:true,
     },
     attempts:{
         type:Number,
         default:0,
     },
-},{
-    timestamps:true,
+},
+{
+    timestamps: true,
 });
 
 // TTL index
 otpSchema.index({expiresAt:1},{expireAfterSeconds:0});
 
-// Export 
+// Export
 module.exports = mongoose.model("OTP",otpSchema);
