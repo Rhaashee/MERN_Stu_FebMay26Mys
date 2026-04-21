@@ -3,28 +3,30 @@ const mongoose = require("mongoose");
 const movieSchema = new mongoose.Schema({
     title:{
         type:String,
-        required:[true,"Movie title is reqyired"],
+        required:[true,"Movie title is required"],
         trim:true,
-        index:true
+        index:true,
     },
     genre:{
         type:String,
         required:[true,"Genre is required"],
         enum:[
-            "Action","Comedy","Drama","Horror","Sci-Fi","Romance","Thriller"
+            "Action","Comedy","Drama","Horror","Sci-Fi",
+            "Romance","Thriller",
         ],
-        index:true
+        index:true,
     },
-    rating:{
+    rating:
+    {
         type:Number,
         required:true,
-        min:[1,"Rating must be atleast 1,"],
-        max:[5,"Rating cannot exceed 5."],
+        min:[1,"Rating must be at least 1"],
+        max:[5,"Rating cannot exceed 5"],
         index:true,
     },
     duration:{
         type:Number,
-        required:[true,"Duration is required."],
+        required:[true,"Duration is required"],
     },
     releaseDate:{
         type:Date,
@@ -33,22 +35,21 @@ const movieSchema = new mongoose.Schema({
     },
     poster:{
         type:String,
-        default:""
+        default:"",
     },
-    langugue:{
+    language:{
         type:String,
-        index:true
+        index:true,
     },
     isActive:{
         type:Boolean,
-        default:true
-    }
-
+        default:true,
+    },
 },{
-    timestamps:true
+    timestamps:true,
 });
 
-// Compound index 
+// Compound index
 movieSchema.index({genre:1,rating:-1});
 
 // Text index
@@ -59,4 +60,4 @@ movieSchema.virtual("isReleased").get(function(){
     return this.releaseDate<=new Date();
 });
 
-module.exports = mongoose.model("Movie",movieSchema) // Creates and exports a Mongoose model named "Movie" from movieSchema to interact with the movies collection.
+module.exports = mongoose.model("Movie",movieSchema);
