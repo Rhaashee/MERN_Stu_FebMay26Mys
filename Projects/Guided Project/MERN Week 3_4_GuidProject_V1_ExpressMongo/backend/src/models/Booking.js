@@ -10,6 +10,7 @@ const bookingSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Show",
         required:true,
+        index:true,
     },
     seats:{
         type:[String],
@@ -26,24 +27,25 @@ const bookingSchema = new mongoose.Schema({
         index:true,
     },
     bookingTime:{
-        type:Date.now(),
-    }
-},{
-    timestamps:true
+        type:Date,
+        default:Date.now(),
+    },
+},
+{
+    timestamps:true,
 });
 
-// Add validation
-bookingSchema.pre("save",function(next) {
-    if(this.seats.length === 0){
-        return next(new Error("Atleast one seat must be selected"));
+//Add validation
+bookingSchema.pre("save",function (next) {
+    if (this.seats.length === 0) {
+        return next(new Error("At least one seat must be selected"));
     }
     if(this.totalSeats!=this.seats.length){
-        return next(new Error("Seat Count mismatch"));
+        return next(new Error("Seat count mismatch"));
     }
     next();
 });
-
-// Compound Index
+//Compound index
 bookingSchema.index({userId:1,showId:1});
 
 module.exports = mongoose.model("Booking",bookingSchema);
