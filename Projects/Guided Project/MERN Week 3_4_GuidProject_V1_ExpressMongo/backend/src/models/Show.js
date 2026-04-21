@@ -49,7 +49,6 @@ const showSchema = new mongoose.Schema({
 
 // Compopund Index
 showSchema.index({movieId:1,date:1});
-
 // Add validation
 showSchema.pre("save",function(next){
     if (this.availableSeats>this.totalSeats) {
