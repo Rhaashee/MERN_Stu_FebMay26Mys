@@ -1,18 +1,18 @@
-const mongoose=require("mongoose")
-const bcrypt=require("bcrypt")
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const userSchema=new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true,"Name is required"],
-        trim:true,//trim is for remove extra spaces
+        trim:true,
     },
     email:{
         type:String,
         required:[true,"Email is required"],
-        unique:true,//unique is for email should not repeat
-        lowercase:true,//even if we enter in upper case it converts and stores in lower case
-        match:[/^\s+@\s+\.\s+$/,"please use a valid email"],
+        unique:true,
+        lowercase:true,
+        match:[/^\S+@\S+\.\S+$/,"Please use a valid email"],
         index:true,
     },
     password:{
@@ -35,17 +35,17 @@ const userSchema=new mongoose.Schema({
     timestamps:true,
 }
 );
-
-// Hashing the password before save 
-userSchema.pre("save",async function (){
+//Hash password before save
+userSchema.pre("save",async function () {
     if (!this.isModified("password")) {
-        return; 
+        return;
     }
-    try {
+    try{
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password,saltRounds);
-    } catch (error) {
-        throw error; // Handled in middleware 
+    }
+    catch(error){
+        throw error;
     }
 });
 
