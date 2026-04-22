@@ -1,74 +1,70 @@
 const movie = require("../models/Movie");
 
-// Create Movie (CRUD-create)
+// Create Movie
 exports.createMovie = async (data) => {
     return await Movie.create(data);
 };
 
-// Get movies (CRUD-read)
-exports.getMoovies = async(query) => {
-    let { page=1, limit=5, genre, rating, search, sort} = query;
+// Get movies
+exports.getMovies = async(query) => {
+    let { page = 1, limit = 5, genre, rating, search, sort} = query;
 
     page = Number(page);
     limit = Number(limit);
 
-    const filter = { isActive:true };
+    const filter = { isActive: true };
 
     if(genre){
         filter.genre = genre;
     }
-    if (rating) {
-        filter.rating = {$gte: Number(rating)};
+    if(rating){
+        filter.rating = { $gte: Number(rating)};
     }
     if(search){
-        filter.$text = {$search : search};
+        filter.$text = { $search: search};
     }
-
     let mongoQuery = Movie.find(filter);
 
     if(sort){
         mongoQuery = mongoQuery.sort(sort);
-    }else{
-        mongoQuery = mongoQuery.sort("-createdAt");  // - indicated descending order of sorting
+    }
+    else{
+        mongoQuery = mongoQuery.sort("-createdAt");
     }
     const skip = (page - 1)*limit;
     mongoQuery = mongoQuery.skip(skip).limit(limit);
 
     const movies = await mongoQuery;
-    const total = await movie.countDocuments(filter);
+    const total = await Movie.countDocuments(filter);
 
-    return{
+    return {
         movies,
         pagination:{
             page,
             limit,
             total,
-        },
+        },   
     };
 };
 
-// Update Movie
-exports.updateMovie = async (id,data)=>{
+// Update movie
+exports.updateMovie = async (id,data) => {
     const movie = await Movie.findByIdAndUpdate(id,data,{
         new:true,
-        runValidators:true, 
+        runValidators:true,
     });
-    if (!movie) {
+
+    if(!movie)
         throw new Error("Movie not found");
 
-        return movie; 
-    }
-}
-
-// Delete Movie
+    return movie;
+};
+//Delete Movie
 exports.deleteMovie = async (id) => {
-    // Soft Delete
+    //Soft delete
     const movie = await Movie.findByIdAndUpdate(id,{
-        isActive:false, 
-    });
-    if (!movie) {
+        isActive:false,
+    }); 
+    if(!movie)
         throw new Error("Movie not found");
-
-        return movie; 
-    }
 };
