@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {protect} = require("../middleware/auth.middleware");
 
-// User booking route 
+//user booking route
 router.post("/",protect,(req,res)=>{
-    res.send("Create booking");  
-})
+    res.send("Create booking");
+});
