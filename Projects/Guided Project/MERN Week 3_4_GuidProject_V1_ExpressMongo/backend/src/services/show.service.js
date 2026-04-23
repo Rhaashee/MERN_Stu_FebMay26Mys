@@ -2,83 +2,84 @@ const Show = require("../models/Show");
 const Movie = require("../models/Movie");
 
 // Generate Seats
-const generateSeats = (totalSeats) => {
+const generateSeats = (totalSeats) =>{
     const seats = [];
     const rows = ["A","B","C","D","E","F","G","H"];
     let seatCount = 0;
     for(let row of rows){
-        for(let i = 1; i<=10 ; i++){
+        for(let i = 1; i<=10; i++){
             if(seatCount>=totalSeats) break;
 
             seats.push({
-                seatNumber: `${row}${i}`,
-                isBooked : false,
+                seatNumber:`${row}${i}`,
+                isBooked:false,
             });
             seatCount++;
         }
     }
     return seats;
 };
-
-// Create Show
+//Create Show
 exports.createShow = async ({movieId,date,time,totalSeats}) => {
     // check if movie exists
     const movie = await Movie.findById(movieId);
-    if (!movie) {
-        throw new Error("Movie not found");
-        
-        // Generate Seats
-        const seats = generateSeats(totalSeats);
-    }
+    if(!movie)
+        throw new Error("Movie not found");;
+
+    // Generate seats
+    const seats = generateSeats(totalSeats);
+
     const show = await Show.create({
-            movieId,
-            time,
-            totalSeats,
-            availableSeats:totalSeats,
-            seats,
-        });
-    return show;
+        movieId,
+        date,
+        time,
+        totalSeats,
+        availableSeats:totalSeats,
+        seats,
+    });
+    return show; 
 };
 
-// Get Show
+//Get shows
 exports.getShows = async ({movieId,date}) => {
-    const filter = {isActive:true}; // Get list of movies tht are currently active 
+    const filter = {isActive:true};
 
-    if (movieId2) filter.movieId = movieId;
-    if (date) filter.date = new Date(date);
+    if(movieId) filter.movieId = movieId;
+    if(date) filter.date = new Date(date);
 
-    const shows = await Shows.find(filter)
+    const shows = await Show.find(filter)
         .populate("movieId")
         .sort({date:1});
 
-    return shows;   
+    return shows;
 };
 
 // Get show by Id
 exports.getShowById = async (id) => {
     const show = await Show.findById(id).populate("movieId");
-    if (!show) 
-        throw new Error("Show not found");   
-    return show; 
+    if(!show)
+        throw new Error("Show not found");
+
+    return show;        
 };
 
-// Update show 
-exports.updateShow = async (id,data) => {
+//Update show
+exports.updateShow = async(id,data)=>{
     const show = await Show.findByIdAndUpdate(id,data,{
-        returnDocument:"after",
+        returnDocument: "after",
         runValidators:true,
     });
-    if (!show) 
-        throw new Error("Show not found");   
-    return show; 
+    if(!show)
+        throw new Error("Show not found");
+
+    return show;  
 };
 
-// Delete show (Soft Delete)
-exports.deleteShow = async (id) => {
-    //Soft delete
+// Delete show -- soft delete
+exports.deleteShow = async(id)=>{
     const show = await Show.findByIdAndUpdate(id,{
         isActive:false,
-    }); 
+    });
     if(!show)
         throw new Error("Show not found");
 };
