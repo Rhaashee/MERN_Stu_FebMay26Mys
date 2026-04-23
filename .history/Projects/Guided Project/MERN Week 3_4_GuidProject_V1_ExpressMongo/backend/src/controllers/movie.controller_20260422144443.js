@@ -1,0 +1,31 @@
+const movieService = require("../services/movie.service");
+
+// Create Movie
+exports.createMovie = async (req,res,next) => {
+    try {
+        const movie = await movieService.createMovie(req.body);
+
+        res.status(201).json({
+            success:true,
+            message:"Movie created successfully.",
+            data:movie 
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Get Movies
+exports.getMovies = async (req,res,next) => {
+    try {
+        const movie = await movieService.createMovie(req.body);
+
+        res.status(201).json({
+            success:true,
+            message:"Movie created successfully.",
+            data:movie 
+        });
+    } catch (error) {
+        next(error);
+    }
+};

@@ -1,0 +1,1 @@
+const connectionsData = require("../data/")

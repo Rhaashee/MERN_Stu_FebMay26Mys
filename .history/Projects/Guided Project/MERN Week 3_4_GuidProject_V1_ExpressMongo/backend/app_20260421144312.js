@@ -1,0 +1,16 @@
+const express = require("express");
+const authRoutes = require("./routes.auth")
+
+const app = express();
+
+app.use(express.json());
+
+// Base URL
+app.get("/", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Movie booking API is running...",
+    });
+});
+
+module.exports = app;
