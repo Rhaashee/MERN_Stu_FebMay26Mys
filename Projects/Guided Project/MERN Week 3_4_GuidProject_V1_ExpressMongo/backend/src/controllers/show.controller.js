@@ -1,72 +1,74 @@
 const showService = require("../services/show.service");
 
-// Create Showc: Admin
-exports.createShow = async (req,res,next)=>{
+// Create Show : Admin
+exports.createShow = async (req,res,next) => {
     try{
         const show = await showService.createShow(req.body);
         res.status(201).json({
-            success : true,
-            message : "Show Created successfully",
-            data : show,
+            success:true,
+            message:"Show created successfully",
+            data:show,
         });
-    }catch(error){
+    }
+    catch(error){
         next(error);
     }
 };
 
-// Get Shows
-exports.getShows = async (req,res,next)=>{
+//Get shows
+exports.getShows = async (req,res,next) => {
     try{
-        const show = await showService.getShows(req.query);
+        const shows = await showService.getShows(req.query);
         res.status(200).json({
-            success : true,
-            message : "Shows fetched successfully",
-            data : shows,
+            success:true,
+            message:"Shows fetched successfully",
+            data:shows,
         });
-    }catch(error){
+    }
+    catch(error){
         next(error);
     }
 };
-
-// Get Single Show
-exports.getShowById = async (req,res,next)=>{
+//Get Single show
+exports.getShowById = async (req,res,next) => {
     try{
-        const show = await showService.getShowById(req.params.if);
+        const show = await showService.getShowById(req.params.id);
         res.status(200).json({
-            success : true,
-            message : "Show fetched successfully",
-            data : show,
+            success:true,
+            message:"Show fetched successfully",
+            data:show,
         });
-        }catch(error){
+    }
+    catch(error){
         next(error);
     }
 };
 
-// Update Show
+//update show - admin
 exports.updateShow = async (req,res,next) => {
-    try {
+    try{
         const show = await showService.updateShow(req.params.id,req.body);
-
         res.status(200).json({
             success:true,
-            message:"Show updated successfully.",
-            data:show 
+            message:"Show updated successfully",
+            data:show,
         });
-    } catch (error) {
+    }
+    catch(error){
         next(error);
     }
 };
 
-// Delete Show (Soft delete peformed only by admin)
+//delete show - admin
 exports.deleteShow = async (req,res,next) => {
-    try {
+    try{
         await showService.deleteShow(req.params.id);
-
         res.status(200).json({
             success:true,
-            message:"Show deleted successfully.",
+            message:"Show deleted successfully",
         });
-    } catch (error) {
+    }
+    catch(error){
         next(error);
     }
 };
