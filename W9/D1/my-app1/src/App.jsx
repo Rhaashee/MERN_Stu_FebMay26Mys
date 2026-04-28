@@ -118,11 +118,25 @@ import './App.css'
 //     </>
 //   )
 // }
+// function App() {
+//   return (
+//     <div>
+//       <h1>React Introduction</h1>
+//       <p>React simplifies UI creation through reuseable components.</p>
+//     </div>
+//   );
+// }
+
+
 function App() {
+  const user = "Rhaashee";
+  const marks = 80;
   return (
     <div>
-      <h1>React Introduction</h1>
-      <p>React simplifies UI creation through reuseable components.</p>
+      {/* Expression within JSX */}
+      {/* {curly brackets} : in JSX means: switch from JSX/HTML like synctax into JavaScript */}
+      <h1>Hello, {user}</h1>
+      <p>Updated marks :{marks+10}</p>
     </div>
   );
 }
