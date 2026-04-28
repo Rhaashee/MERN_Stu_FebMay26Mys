@@ -1,12 +1,14 @@
 
 import './App.css'
-import { PropBasics } from "./components/P1"
+// import { PropBasics } from "./components/P1"
+import { PropDestructuring } from "./components/P2"
 
 function App() {
 
   return (
     <>
-      <PropBasics/>
+      {/* <PropBasics/> */}
+      <PropDestructuring/>
     </>
   )
 }
