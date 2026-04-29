@@ -33,5 +33,4 @@ export function CompositionDemo(){
     )
 }
 
-
 // DashboardLayout (parent component) -> AccountSidebar -> UserInfoPanel -> ProfileAvatar
