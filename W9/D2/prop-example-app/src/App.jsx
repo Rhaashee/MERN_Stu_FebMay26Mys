@@ -28,7 +28,7 @@ function App() {
       {/* <PropsState /> */}
       {/* <FunctionProps /> */}
       {/* <PropTypesDemo /> */}
-      <HOCExample/>
+      <HOCExample/>Higher-Order Components(HOC)
     </>
   )
 }
