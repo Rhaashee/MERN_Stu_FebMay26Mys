@@ -2,7 +2,7 @@
 
 import PropTypes from "prop-types"
 
-function Profile({name,age}){
+function Profile({name="Rhaashee",age}){
     return(
         <div className="card">
             <p>{name}</p>
