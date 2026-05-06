@@ -1,16 +1,15 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
-// import heroImg from './assets/hero.png'
 import './App.css'
-import {UseContextIntro} from './components/P1'
+// import { UseContextIntro } from "./components/P1";
+// import { CustomHooksIntro} from "./components/P2";
+import { UserRefIntro} from "./components/P3";
 
 function App() {
-  return(
+  return (
     <>
-        <UseContextIntro/>
+      {/* <UseContextIntro />        */}
+      {/* <CustomHooksIntro /> */}
+      <UserRefIntro />
     </>
   )
 }
-
 export default App
