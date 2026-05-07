@@ -3,7 +3,8 @@ import './App.css'
 // import { EventObject } from './components/P2'
 // import { PassingArguements } from './components/P3'
 // import { UseCallbackEvents } from './components/P5'
-import { EventDeleagation } from './components/P6'
+// import { EventDeleagation } from './components/P6'
+import { FormsPattern } from './components/P7'
 
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
       {/* <EventObject /> */}
       {/* <PassingArguements /> */}
       {/* <UseCallbackEvents /> */}
-      <EventDeleagation />
+      {/* <EventDeleagation /> */}
+      <FormsPattern />
     </>
   )
 }
