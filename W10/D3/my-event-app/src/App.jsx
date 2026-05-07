@@ -2,7 +2,9 @@ import './App.css'
 // import { EventBasics } from './components/P1'
 // import { EventObject } from './components/P2'
 // import { PassingArguements } from './components/P3'
-import { UseCallbackEvents } from './components/P5'
+// import { UseCallbackEvents } from './components/P5'
+import { EventDeleagation } from './components/P6'
+
 function App() {
 
   return (
@@ -10,7 +12,8 @@ function App() {
       {/* <EventBasics /> */}
       {/* <EventObject /> */}
       {/* <PassingArguements /> */}
-      <UseCallbackEvents />
+      {/* <UseCallbackEvents /> */}
+      <EventDeleagation />
     </>
   )
 }
