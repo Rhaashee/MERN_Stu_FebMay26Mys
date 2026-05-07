@@ -22,8 +22,7 @@ export function UserRefIntro(){
 
     useEffect(()=>{
         inputRef.current.focus();
-    },[]);
-    useEffect(()=>{
+    },[]);useEffect(()=>{
         previousCountRef.current = count;
     },[count]);
 
