@@ -1,16 +1,16 @@
-import './App.css'
-// import HomePage from './pages/HomePage'
-// import MovieCard from './components/MovieCard'
-import CitySelector from './components/CitySelector';
-import MovieSearch from './components/MovieSearch';
+import "./App.css";
+import AuthStatus from "./components/AuthStatus";
+import MovieLoader from "./components/MovieLoader";
+import MovieResults from "./components/MovieResults";
+
 function App() {
     return (
         <>
-            <CitySelector />
-            {/* Controlled Component */}
-            <MovieSearch />
+            <AuthStatus />
+            <MovieLoader />
+            <MovieResults />
         </>
     );
 }
 
-export default App
+export default App;
